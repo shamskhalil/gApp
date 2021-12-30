@@ -1,0 +1,30 @@
+syntax = "proto3";
+package main;
+option go_package="./contactpb";
+
+
+
+service ContactServiceApi{
+    rpc add(AddContactRequest) returns (AddContactResponse){}
+    rpc getOne(GetOneContactRequest) returns (GetOneContactResponse){}
+    rpc getAll(GetOneContactRequest) returns (stream GetOneContactResponse){}
+}
+
+message GetOneContactRequest{
+    int64 index = 1;
+}
+
+message GetOneContactResponse{
+    string name = 1;
+    string phone =2;
+}
+
+
+message AddContactRequest{
+    string name = 1;
+    string phone =2;
+}
+
+message AddContactResponse{
+    string msg = 1;
+}
